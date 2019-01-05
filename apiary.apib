@@ -1,0 +1,78 @@
+FORMAT: 1A
+HOST: http://localhost:3000/api
+
+# VUTTR
+
+Very Useful Tools to Remember.
+
+# Group Tools
+
+## All Tools [/tools{?tag}]
+
++ Parameters
+    + tag: 'node' (optional, string) - A tag to get only tools that contains the specified tag.
+
+
+### Retrieve All Tools [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                id: 1,
+                title: "Notion",
+                link: "https://notion.so",
+                description: "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
+                tags: [
+                    "organization",
+                    "planning",
+                    "collaboration",
+                    "writing",
+                    "calendar"
+                ]
+            },
+        ]
+        
+        
+## Create Tool [/tools]
+
+### Create a New Tool [POST]
+
+You may create tools using this action. It takes a JSON
+object containing a tool attributes and a collection of 
+tags related with the tool.
+
++ Request (application/json)
+
+        {
+            "title": "hotel",
+            "link": "https://github.com/typicode/hotel",
+            "description": "Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.",
+            "tags":["node", "organizing", "webapps", "domain", "developer", "https", "proxy"]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+
+    + Body
+
+            {
+                "title": "hotel",
+                "link": "https://github.com/typicode/hotel",
+                "description": "Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.",
+                "tags":["node", "organizing", "webapps", "domain", "developer", "https", "proxy"],
+                "id":5
+            }
+            
+## Tool [/tools/{id}]
+
+### Delete a Tool [DELETE]
+
+You can delete a tool if you no longer want to remember it.
+
++ Parameters
+    + id: 1 (required, number) - A integer number that is the unique identifier of the tool.
+
++ Response 204
